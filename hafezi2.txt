@@ -1,0 +1,83 @@
+CREATE DATABASE my_database;
+USE my_database;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+
+
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحه ورود</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>ورود به سایت</h2>
+    <form action="process.php" method="POST">
+        <label for="username">نام کاربری:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">رمز عبور:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="ورود">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+style.css
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+process.php
+
+<?php
+$servername = "localhost";
+$username = "root"; // نام کاربری MySQL
+$password = "your_password"; // رمز عبور MySQL
+$dbname = "my_database";
+
+// ایجاد اتصال
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// بررسی اتصال
+if ($conn->connect_error) {
+    die("اتصال ناموفق: " . $conn->connect_error);
+}
+
+// دریافت اطلاعات فرم
+$user = $_POST['username'];
+$pass = $_POST['password'];
+
+// درج اطلاعات در جدول
+$sql = "INSERT INTO users (username, password) VALUES ('$user', '$pass')";
+if ($conn->query($sql) === TRUE) {
+    echo "کاربر جدید با موفقیت ثبت شد";
+} else {
+    echo "خطا: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
