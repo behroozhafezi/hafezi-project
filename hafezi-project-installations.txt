@@ -1,0 +1,65 @@
+install ubunto 22.04
+install ubunto 22.04.4
+install centos 8
+install centos 7
+config centos 7
+add repository
+yum update
+yum repolist
+
+nginx
+-----
+yum install nginx
+config nginx
+edit html file on /usr/share/nginx/html/
+
+
+
+git
+------
+yum install git
+
+create user on github
+create repository on user of github
+create token and get permision on repository
+
+git config --global user.name "Behrooz"
+git config --global user.email "b_hafezi@isc.co.ir"
+git init
+Initialized empty Git repository in /usr/share/nginx/html/.git/
+
+git add .
+git commit -m "first commmit"
+git remote add origin https://github.com/behroozhafezi/hafezi-project
+git push -u origin master
+use token for password
+
+ansible
+--------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
